@@ -53,7 +53,11 @@ export default function Navigation() {
       <Stack.Screen 
         name="RegisterCV" 
         component={RegisterCVScreen} 
-        options={{ title: 'Registrar Hoja de Vida' }} 
+        options={{ title: '', headerStyle:{
+          backgroundColor: '#2567E8',          
+        },
+        headerShadowVisible: false,
+        headerTintColor:'#fff', }} 
       />
     </Stack.Navigator>
   );
