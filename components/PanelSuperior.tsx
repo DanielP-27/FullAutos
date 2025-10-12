@@ -48,8 +48,8 @@ const PanelSuperior: React.FC<PanelSuperiorProps> = ({
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#2567E8',
-    paddingTop: 40,
-    paddingBottom: 30,
+    paddingTop: 20,
+    paddingBottom: 20,
     paddingHorizontal: 50,
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,

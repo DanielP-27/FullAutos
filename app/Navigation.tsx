@@ -9,6 +9,7 @@ import ServicesScreen from './screens/ServiciosScreen';
 import TechniciansScreen from './screens/TechniciansScreen';
 import RegisterCVScreen from './screens/RegisterCVScreen';
 import RegisterUser from './screens/RegisterUser';
+import GridCardsHomed from '../components/GridCardsHome'
 
 // Definir los tipos de parámetros para navegación
 export type RootStackParamList = {
@@ -35,7 +36,7 @@ export default function Navigation() {
       <Stack.Screen 
         name="Home" 
         component={HomeScreen} 
-        options={{ title: 'Inicio' }} 
+        options={{ headerShown: false }} 
       />
       <Stack.Screen 
         name="About" 
@@ -55,7 +56,7 @@ export default function Navigation() {
       <Stack.Screen 
         name="RegisterUser" 
         component={RegisterUser} 
-        options={{ title: 'RegisterUser' }} 
+        options={{ headerShown: false }}  
       />
       <Stack.Screen 
         name="RegisterCV" 
