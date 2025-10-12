@@ -3,13 +3,19 @@ import { View, StyleSheet } from 'react-native';
 import { Button, Title } from 'react-native-paper';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../Navigation';
+import PanelSuperior from '@/components/panelSuperior';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
 export default function HomeScreen({ navigation }: Props) {
+
+
   return (
     <View style={styles.container}>
-      <Title style={styles.title}>Bienvenido a Full Autos SAS</Title>
+      <PanelSuperior
+        title="¡HOLA!"
+        subtitle="Hola, Usuario"
+      />
 
       <Button mode="contained" onPress={() => navigation.navigate('About')} style={styles.button}>
         Acerca de la Empresa

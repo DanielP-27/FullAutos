@@ -1,16 +1,24 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity  } from 'react-native';
 
 interface HeaderPagProps {
   title: string;
   subtitle?: string;
+  linkText?: string;
+  onLinkPress?: () => void;
 }
 
-const HeaderPag: React.FC<HeaderPagProps> = ({ title, subtitle }) => {
+const HeaderPag: React.FC<HeaderPagProps> = ({ title, subtitle, linkText, onLinkPress }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
       {subtitle && <Text style={styles.subtitle}>{subtitle}</Text>}
+
+      {linkText && (
+        <TouchableOpacity onPress={onLinkPress}>
+          <Text style={styles.link}>{linkText}</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
@@ -40,6 +48,13 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 8,
     textAlign: 'center',
+  },
+
+  link: {
+    color: '#fff', // blanco
+    fontSize: 14,
+    marginTop: 10,
+    textDecorationLine: 'underline', // opcional, para que parezca un link
   },
 });
 

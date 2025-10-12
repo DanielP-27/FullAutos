@@ -17,6 +17,10 @@ export default function LoginScreen({ navigation }: Props) {
     navigation.replace("Home");
   };
 
+  const handleRegisterUser = () => {
+    navigation.replace("RegisterUser");
+  };
+
   return (
     <View style={styles.container}>
       <HeaderAuth
@@ -45,7 +49,7 @@ export default function LoginScreen({ navigation }: Props) {
         <Button mode="contained" onPress={handleLogin} style={styles.button}>
           Inicia sesión
         </Button>
-        <Button onPress={() => Alert.alert("Crear cuenta")} style={styles.link}>
+        <Button onPress={handleRegisterUser} style={styles.link}>
           ¿Todavía no tienes una cuenta? Regístrate
         </Button>
       </View>
@@ -79,7 +83,7 @@ const styles = StyleSheet.create({
   button: { marginTop: 10 },
   link: { marginTop: 5 },
   textTitle: {
-    // 👈 agrega esto
+
     fontSize: 28,
     fontWeight: "bold",
     color: "#333",
@@ -87,7 +91,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   text: {
-    // 👈 agrega esto
+   
     fontSize: 16,
     fontWeight: "regular",
     color: "#333",
