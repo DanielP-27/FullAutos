@@ -1,9 +1,9 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Button, Title } from 'react-native-paper';
+import PanelSuperior from '@/components/PanelSuperior';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { Button } from 'react-native-paper';
 import { RootStackParamList } from '../Navigation';
-import PanelSuperior from '@/components/panelSuperior';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Home'>;
 
@@ -29,6 +29,12 @@ export default function HomeScreen({ navigation }: Props) {
       </Button>
       <Button mode="contained" onPress={() => navigation.navigate('RegisterCV')} style={styles.button}>
         Registrar CV
+      </Button>
+      <Button mode="contained" onPress={() => navigation.navigate('TaskList')} style={styles.button}>
+        Lsita de Tareas
+      </Button>
+      <Button mode="contained" onPress={() => navigation.navigate('Contact')} style={styles.button}>
+        Contacto
       </Button>
     </View>
   );
