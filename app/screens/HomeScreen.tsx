@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet,  } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../Navigation";
 import PanelSuperior from "../../components/PanelSuperior";
@@ -15,24 +15,21 @@ export default function HomeScreen({ navigation }: Props) {
     setActiveTab(tab);
     console.log("Tab presionado:", tab);
 
-    // Puedes usar esto para navegar si tus pantallas existen:
-    // navigation.navigate(tab as never);
   };
   return (
-    <View style={styles.container}>
-      <PanelSuperior
-        title="Hola, Usuario"
-        onNotificationPress={() => console.log("Notificaciones")}
-        onProfilePress={() => console.log("Perfil")}
-        notificationCount={3}
-      />
-
-      {/* Aquí integramos el grid */}
+  <View style={styles.container}>
+    <PanelSuperior
+      title="Hola, Usuario"
+      onNotificationPress={() => console.log("Notificaciones")}
+      onProfilePress={() => console.log("Perfil")}
+      notificationCount={3}
+    />
+    <ScrollView contentContainerStyle={styles.scrollContent}>
       <GridCardsHome />
-
-      <NavbarBottom activeTab={activeTab} onTabPress={handleTabPress} />
-    </View>
-  );
+    </ScrollView>
+  </View>
+  
+);
 }
 
 const styles = StyleSheet.create({
@@ -41,8 +38,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f4f6f8",
     paddingTop: 100,
   },
-  grid: {
-    paddingHorizontal: 16,
-    paddingBottom: 40,
+  scrollContent: {
+    paddingBottom: 100, // deja espacio para que el scroll no tape contenido bajo la barra
   },
 });

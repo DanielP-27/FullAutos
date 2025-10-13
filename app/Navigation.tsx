@@ -104,7 +104,7 @@ export default function Navigation() {
       <Stack.Screen
         name="About"
         component={AboutScreen}
-        options={{ title: "Acerca de" }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Services"
