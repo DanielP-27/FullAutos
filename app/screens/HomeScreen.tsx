@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { View, StyleSheet,  } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { RootStackParamList } from "../Navigation";
-import PanelSuperior from "../../components/PanelSuperior";
+import React, { useState } from "react";
+import { StyleSheet, View, } from "react-native";
 import GridCardsHome from "../../components/GridCardsHome";
 import NavbarBottom from "../../components/NavbarBottom";
+import PanelSuperior from "../../components/PanelSuperior";
+import { RootStackParamList } from "../Navigation";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Home">;
 
@@ -26,7 +26,6 @@ export default function HomeScreen({ navigation }: Props) {
         onProfilePress={() => console.log("Perfil")}
         notificationCount={3}
       />
-
       {/* Aquí integramos el grid */}
       <GridCardsHome />
 

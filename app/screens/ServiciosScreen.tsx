@@ -1,35 +1,72 @@
-import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
-import { Button, Card, Paragraph, Title } from 'react-native-paper';
+import TarjetaServicios from '@/components/ServiceCard';
+import React, { useState } from 'react';
+import { ScrollView, StyleSheet, View } from 'react-native';
+import NavbarBottom from "../../components/NavbarBottom";
+import PanelSuperior from "../../components/PanelSuperior";
+import { serviciosData } from "../../data/serviciosData";
 
-export default function ServicesScreen() {
+export default function ServicesScreen({navigation}: any) {
+
+  const [activeTab, setActiveTab] = useState('search')
+
+  const handleTabPress = (tab: string) => {
+    setActiveTab(tab);
+  }
+
   const services = [
-    { id: 1, name: 'Mantenimiento', description: 'Cambio de aceite, filtros y revisión general.' },
-    { id: 2, name: 'Reparación', description: 'Reparación de motores, frenos y suspensión.' },
-    { id: 3, name: 'Lavado y Detailing', description: 'Lavado completo, encerado y limpieza interior.' },
+    { id: 1, name: 'Alineación y Suspensión', image: require('../../assets/images/alineacion.jpg') },
+    { id: 2, name: 'Revision Preventiva', image: require ('../../assets/images/preventiva.jpg') },
+    { id: 3, name: 'Cambio de Aceite', image: require('../../assets/images/aceite.jpg') },
+    { id: 4, name: 'Cambio de Bateria', image: require('../../assets/images/bateria.jpg') },
   ];
 
-  return (
-    <ScrollView style={styles.container}>
-      <Title style={styles.mainTitle}>Servicios</Title>
+  const handleServicePress = (serviceId: number) => {
+      const servicioDetalle = serviciosData[serviceId];
+      console.log('Servicio seleccionado', servicioDetalle)
 
-      {services.map(service => (
-        <Card key={service.id} style={styles.card}>
-          <Card.Content>
-            <Title>{service.name}</Title>
-            <Paragraph>{service.description}</Paragraph>
-          </Card.Content>
-          <Card.Actions>
-            <Button onPress={() => alert(`Ver técnicos relacionados a ${service.name}`)}>Consultar</Button>
-          </Card.Actions>
-        </Card>
-      ))}
-    </ScrollView>
+      navigation.navigate('DetalleServicio', {servicio: servicioDetalle})
+    };
+
+  return (
+    <View style={styles.container}>
+      <PanelSuperior
+      title="Servicios"
+      onNotificationPress={() => console.log("Notificaciones")}
+      notificationCount={5}
+      />
+      
+      <ScrollView 
+        style={styles.scrollView}
+        contentContainerStyle={styles.scrollContent}
+      >
+        {services.map(service => (
+          <TarjetaServicios
+            key={service.id}
+            titulo={service.name}
+            imagen={service.image}
+            onPress={() => handleServicePress(service.id)}
+          />
+        ))}
+      </ScrollView>
+
+      <NavbarBottom 
+      activeTab={activeTab} 
+      onTabPress={handleTabPress} />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 15, backgroundColor: '#f4f6f8' },
-  mainTitle: { fontSize: 24, fontWeight: 'bold', marginBottom: 20, color: '#490e89ff', textAlign: 'center' },
-  card: { marginBottom: 15, borderRadius: 10, elevation: 3 },
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+  },
+  scrollView: {
+    flex: 1,
+  },
+  scrollContent: {
+    paddingVertical: 16,
+    paddingBottom: 80,
+  },
 });
+ 
