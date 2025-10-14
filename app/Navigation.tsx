@@ -8,10 +8,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 // Importar todas las pantallas
 import AboutScreen from "./screens/AboutScreen";
+import ConfirmacionCitaScreen from "./screens/ConfirmacionCitaScreen";
 import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterCVScreen from "./screens/RegisterCVScreen";
 import RegisterUser from "./screens/RegisterUser";
+import RegistroServiciosScreen from "./screens/RegistroServicioScreen";
 import ServicesScreen from "./screens/ServiciosScreen";
 import TechniciansScreen from "./screens/TechniciansScreen";
 
@@ -31,6 +33,16 @@ export type RootStackParamList = {
   TaskDetails: { taskId: string };
   Contact: undefined;
   DetalleServicio: {servicioId: number};
+  RegistroServicio: undefined;
+  CitaProgramada: {
+    nombreCompleto:string;
+    correo: string;
+    contacto: string;
+    servicio: string;
+    tecnico: string;
+    fecha: string;
+    hora: string;
+  }
 };
 
 // Crear stack
@@ -140,6 +152,16 @@ export default function Navigation() {
         component={DetalleServicioScreen}
         options={{headerShown: false}}
       />
+      < Stack.Screen
+        name="RegistroServicio"
+        component={RegistroServiciosScreen}
+        options={{headerShown: false}}
+      />
+      < Stack.Screen
+        name="CitaProgramada"
+        component={ConfirmacionCitaScreen}
+        options={{headerShown: false}}
+      />  
     </Stack.Navigator>
   );
 }

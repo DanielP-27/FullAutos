@@ -19,7 +19,7 @@ export default function DetalleServicioScreen() {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   const {servicioId} = route.params;
-  const ServicioId = Number(servicioId);
+  const ServicioId = Number(servicioId);  
   const servicio = serviciosData [ServicioId]; 
 
   const [activeTab, setActiveTab] = useState('search');
