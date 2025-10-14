@@ -1,3 +1,4 @@
+import NavbarBottom from '@/components/NavbarBottom';
 import PanelSuperior from '@/components/PanelSuperior';
 import { Ionicons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
@@ -20,6 +21,13 @@ export default function RegisterCVScreen() {
     'Diagnóstico electrónico',
     'Mantenimiento preventivo',
   ];
+
+  const [activeTab, setActiveTab] = useState('search');
+  
+  const handleTabPress = (tab: string) => {
+    setActiveTab(tab);
+  };
+
 
   const handleAttachCV = () => {
     // Aquí iría la lógica para seleccionar archivo
@@ -145,6 +153,10 @@ export default function RegisterCVScreen() {
           </TouchableOpacity>
         </View>
       </ScrollView>
+            <NavbarBottom 
+            activeTab={activeTab} 
+            onTabPress={handleTabPress} 
+            />
     </SafeAreaView>
   );
 }
