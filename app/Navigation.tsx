@@ -16,6 +16,7 @@ import ServicesScreen from "./screens/ServiciosScreen";
 import TechniciansScreen from "./screens/TechniciansScreen";
 
 import NavbarBottom from "../components/NavbarBottom";
+import DetalleServicioScreen from "./screens/DetalleServicioScreen";
 
 // Definir los tipos de parámetros para navegación
 export type RootStackParamList = {
@@ -133,6 +134,11 @@ export default function Navigation() {
           headerShadowVisible: false,
           headerTintColor: "#fff",
         }}
+      />
+      < Stack.Screen
+        name="DetalleServicio"
+        component={DetalleServicioScreen}
+        options={{headerShown: false}}
       />
     </Stack.Navigator>
   );

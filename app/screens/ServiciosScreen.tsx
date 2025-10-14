@@ -1,13 +1,16 @@
 import TarjetaServicios from '@/components/ServiceCard';
-import { router } from 'expo-router';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import NavbarBottom from "../../components/NavbarBottom";
 import PanelSuperior from "../../components/PanelSuperior";
 import { serviciosData } from "../../data/serviciosData";
+import type { RootStackParamList } from '../Navigation';
 
 export default function ServicesScreen() {
 
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const [activeTab, setActiveTab] = useState('search')
 
   const handleTabPress = (tab: string) => {
@@ -25,11 +28,8 @@ export default function ServicesScreen() {
       const servicioDetalle = serviciosData[serviceId];
       console.log('Servicio seleccionado', servicioDetalle)
 
-      router.push({
-        pathname: '/screens/DetalleServicioScreen',
-        params:{
-          servicioId: serviceId.toString()
-        }
+      navigation.navigate('DetalleServicio', {
+        servicioId: serviceId
       });
     };
 
