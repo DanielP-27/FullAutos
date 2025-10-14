@@ -1,13 +1,15 @@
+import NavbarBottom from '@/components/NavbarBottom';
 import PanelSuperior from '@/components/PanelSuperior';
 import { serviciosData } from '@/data/serviciosData';
 import { Ionicons } from '@expo/vector-icons';
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Text, Title } from 'react-native-paper';
 
 import type { RouteProp } from '@react-navigation/native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import type { RootStackParamList } from '../Navigation';
 
 type DetalleServicioRouteProp = RouteProp<RootStackParamList, 'DetalleServicio'>;
@@ -20,6 +22,12 @@ export default function DetalleServicioScreen() {
   const ServicioId = Number(servicioId);
   const servicio = serviciosData [ServicioId]; 
 
+  const [activeTab, setActiveTab] = useState('search');
+
+  const handleTabPress = (tab: string) => {
+    setActiveTab(tab);
+  };
+
   const handleContratarServicio = () => {
     alert(`Contratar servicio: ${servicio.nombre}`);
   };
@@ -29,11 +37,11 @@ export default function DetalleServicioScreen() {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
       <PanelSuperior
       title="Servicios"
       onNotificationPress={() => console.log("Notificaciones")}
-      notificationCount={5}
+      notificationCount={5}    
       />
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
@@ -74,8 +82,17 @@ export default function DetalleServicioScreen() {
           <Text style={styles.contactoTexto}>{servicio.contacto.direccion}</Text>
           <Text style={styles.contactoTexto}>Tel: {servicio.contacto.telefono}</Text>
         </View>
+        
+        <TouchableOpacity style={styles.volverButton} onPress={handleGoBack}>
+          <Ionicons name="arrow-back" size={18} color="#5838B8" />
+          <Text style={styles.volverText}>Volver</Text>
+        </TouchableOpacity>
       </ScrollView>
-    </View>
+      <NavbarBottom 
+      activeTab={activeTab} 
+      onTabPress={handleTabPress} 
+      />
+    </SafeAreaView>
   );
 }
 
@@ -226,4 +243,21 @@ const styles = StyleSheet.create({
     color: '#4B5563',
     marginBottom: 5,
   },
+  volverButton: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: '#FFFFFF',
+  borderWidth: 2,
+  borderColor: '#5838B8',
+  borderRadius: 25,
+  paddingVertical: 12,
+  paddingHorizontal: 20,
+},
+  volverText: {
+  fontSize: 16,
+  fontWeight: '600',
+  color: '#5838B8',
+  marginLeft: 8,
+},
 });

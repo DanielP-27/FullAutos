@@ -30,7 +30,7 @@ export type RootStackParamList = {
   TaskList: undefined;
   TaskDetails: { taskId: string };
   Contact: undefined;
-  DetalleServicio: {servicioId: number}
+  DetalleServicio: {servicioId: number};
 };
 
 // Crear stack
@@ -111,7 +111,7 @@ export default function Navigation() {
       <Stack.Screen
         name="Services"
         component={ServicesScreen}
-        options={{ title: "Servicios" }}
+        options={{ headerShown: false }}
       />
       <Stack.Screen
         name="Technicians"

@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 interface PanelSuperiorProps {
   title: string; // Ej: "Hola, Usuario"
@@ -57,10 +57,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '100%',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-
+    position: 'relative'
   },
   profileIconContainer: {
     marginRight: 10,

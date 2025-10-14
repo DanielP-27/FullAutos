@@ -2,7 +2,6 @@ import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import React, { useState } from "react";
 import { StyleSheet, View, } from "react-native";
 import GridCardsHome from "../../components/GridCardsHome";
-import NavbarBottom from "../../components/NavbarBottom";
 import PanelSuperior from "../../components/PanelSuperior";
 import { RootStackParamList } from "../Navigation";
 
@@ -28,8 +27,6 @@ export default function HomeScreen({ navigation }: Props) {
       />
       {/* Aquí integramos el grid */}
       <GridCardsHome />
-
-      <NavbarBottom activeTab={activeTab} onTabPress={handleTabPress} />
     </View>
   );
 }
