@@ -29,7 +29,11 @@ export default function DetalleServicioScreen() {
   };
 
   const handleContratarServicio = () => {
-    alert(`Contratar servicio: ${servicio.nombre}`);
+    navigation.navigate('RegistroServicio', {
+      servicioId: ServicioId,
+      nombreServicio: servicio.nombre,
+      valorServicio: servicio.precio,
+    });
   };
 
   const handleGoBack = () => {

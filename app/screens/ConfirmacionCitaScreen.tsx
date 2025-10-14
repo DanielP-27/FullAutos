@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#E5E7EB',
   },
   confirmarButton: {
-    backgroundColor: '#5838B8',
+    backgroundColor: '#2567E8',
     borderRadius: 25,
     paddingVertical: 16,
     alignItems: 'center',
@@ -210,4 +210,4 @@ const styles = StyleSheet.create({
     color: '#6B7280',
     marginBottom: 8,
   },
-});
+});   

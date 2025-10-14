@@ -33,7 +33,11 @@ export type RootStackParamList = {
   TaskDetails: { taskId: string };
   Contact: undefined;
   DetalleServicio: {servicioId: number};
-  RegistroServicio: undefined;
+  RegistroServicio: {
+    servicioId: number;
+    nombreServicio: string;
+    valorServicio: string;
+  }
   CitaProgramada: {
     nombreCompleto:string;
     correo: string;
@@ -138,14 +142,7 @@ export default function Navigation() {
       <Stack.Screen
         name="RegisterCV"
         component={RegisterCVScreen}
-        options={{
-          title: "",
-          headerStyle: {
-            backgroundColor: "#2567E8",
-          },
-          headerShadowVisible: false,
-          headerTintColor: "#fff",
-        }}
+        options={{ headerShown: false}}
       />
       < Stack.Screen
         name="DetalleServicio"

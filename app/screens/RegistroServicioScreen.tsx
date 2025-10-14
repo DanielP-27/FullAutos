@@ -34,15 +34,13 @@ export default function RegistroServicioScreen() {
 
   const tecnicos = [
     'Juan Pérez',
-    'María González',
-    'Carlos Rodríguez',
-    'Ana Martínez',
-    'Luis Fernández',
+    'María López',
+    'Carlos Gomez',
   ];
 
   const meses = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
   const dias = Array.from({ length: 31 }, (_, i) => String(i + 1).padStart(2, '0'));
-  const anios = ['2024', '2025', '2026'];
+  const anios = ['2025', '2026'];
   const horas = [
     '07:00', '08:00', '09:00', '10:00', '11:00', '12:00',
     '13:00', '14:00', '15:00', '16:00', '17:00', '18:00',
@@ -268,7 +266,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   confirmarButton: {
-    backgroundColor: '#5838B8',
+    backgroundColor: '#2567E8',
     borderRadius: 25,
     paddingVertical: 16,
     alignItems: 'center',
