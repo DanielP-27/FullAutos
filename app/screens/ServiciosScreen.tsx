@@ -1,11 +1,12 @@
 import TarjetaServicios from '@/components/ServiceCard';
+import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
 import NavbarBottom from "../../components/NavbarBottom";
 import PanelSuperior from "../../components/PanelSuperior";
 import { serviciosData } from "../../data/serviciosData";
 
-export default function ServicesScreen({navigation}: any) {
+export default function ServicesScreen() {
 
   const [activeTab, setActiveTab] = useState('search')
 
@@ -24,7 +25,12 @@ export default function ServicesScreen({navigation}: any) {
       const servicioDetalle = serviciosData[serviceId];
       console.log('Servicio seleccionado', servicioDetalle)
 
-      navigation.navigate('DetalleServicio', {servicio: servicioDetalle})
+      router.push({
+        pathname: '/screens/DetalleServicioScreen',
+        params:{
+          servicioId: serviceId.toString()
+        }
+      });
     };
 
   return (

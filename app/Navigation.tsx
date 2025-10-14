@@ -1,19 +1,19 @@
-import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from "react";
 
 import { StyleSheet, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 // Importar todas las pantallas
-import LoginScreen from "./screens/LoginScreen";
-import HomeScreen from "./screens/HomeScreen";
 import AboutScreen from "./screens/AboutScreen";
-import ServicesScreen from "./screens/ServiciosScreen";
-import TechniciansScreen from "./screens/TechniciansScreen";
+import HomeScreen from "./screens/HomeScreen";
+import LoginScreen from "./screens/LoginScreen";
 import RegisterCVScreen from "./screens/RegisterCVScreen";
 import RegisterUser from "./screens/RegisterUser";
+import ServicesScreen from "./screens/ServiciosScreen";
+import TechniciansScreen from "./screens/TechniciansScreen";
 
 import NavbarBottom from "../components/NavbarBottom";
 
@@ -29,6 +29,7 @@ export type RootStackParamList = {
   TaskList: undefined;
   TaskDetails: { taskId: string };
   Contact: undefined;
+  DetalleServicio: {servicioId: number}
 };
 
 // Crear stack

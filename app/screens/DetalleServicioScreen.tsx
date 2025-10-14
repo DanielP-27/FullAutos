@@ -1,18 +1,22 @@
 import PanelSuperior from '@/components/PanelSuperior';
+import { serviciosData } from '@/data/serviciosData';
 import { Ionicons } from '@expo/vector-icons';
+import { router, useLocalSearchParams } from 'expo-router';
 import React from 'react';
 import { ScrollView, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Text, Title } from 'react-native-paper';
 
-export default function DetalleServicioScreen({ route, navigation }: any) {
-  const { servicio } = route.params;
+export default function DetalleServicioScreen() {
+  const params = useLocalSearchParams();
+  const ServicioId = Number(params.servicioId);
+  const servicio = serviciosData[ServicioId];
 
   const handleContratarServicio = () => {
     alert(`Contratar servicio: ${servicio.nombre}`);
   };
 
   const handleGoBack = () => {
-    navigation.goBack();
+    router.back();
   };
 
   return (
