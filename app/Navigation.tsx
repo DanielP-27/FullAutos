@@ -111,7 +111,7 @@ export default function Navigation() {
       />
 
       {/* Pantalla de inicio */}
-      <Stack.Screen name="Home" options={{ title: "Inicio" }}>
+      <Stack.Screen name="Home" options={{ headerShown: false }}>
         {({ navigation, route }) => (
           <ScreenWithNavbar>
             <HomeScreen navigation={navigation} route={route} />
@@ -142,7 +142,7 @@ export default function Navigation() {
         {() => (
           <ScreenWithNavbar>
             <TechniciansScreen />
-          </ScreenWithNavbar>
+          </ScreenWithNavbar> 
         )}
       </Stack.Screen>
 

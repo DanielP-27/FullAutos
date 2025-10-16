@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> ramaFelipe
 import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
@@ -104,8 +101,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginLeft: 4,
   },
-<<<<<<< HEAD
+
 });
-=======
-});
->>>>>>> ramaFelipe
+

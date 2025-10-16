@@ -7,10 +7,9 @@
     "icon": "./assets/images/icon.png",
     "scheme": "fullautosapp",
     "userInterfaceStyle": "automatic",
-<<<<<<< HEAD
-=======
+
     "sdkVersion": "54.0.0",
->>>>>>> ramaFelipe
+
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true

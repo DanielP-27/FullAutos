@@ -54,7 +54,7 @@ export default function LoginScreen({ navigation }: Props) {
         </Button>
       </View>
     </View>
-  );
+  ); 
 }
 
 const styles = StyleSheet.create({
