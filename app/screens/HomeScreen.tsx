@@ -4,8 +4,7 @@ import { View, StyleSheet, ScrollView } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../Navigation";
 import PanelSuperior from "../../components/PanelSuperior";
-import GridCardsHome from "../../components/GridCardsHome";
-import NavbarBottom from "../../components/NavbarBottom";
+import { RootStackParamList } from "../Navigation";
 
 type Props = NativeStackScreenProps<RootStackParamList, "Home">;
 
