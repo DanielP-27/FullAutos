@@ -1,3 +1,4 @@
+import PanelSuperior from '@/components/PanelSuperior';
 import { useTheme } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
@@ -5,14 +6,13 @@ import { FlatList, StyleSheet, View } from 'react-native';
 import { Button, Card, PaperProvider, Paragraph, Title } from 'react-native-paper';
 import { RootStackParamList } from '../Navigation';
 
-
 interface Task {
   id: string;
   name: string;
   description: string;
 }
 
-type Props = NativeStackScreenProps<RootStackParamList, 'TaskList'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'TaskListScreen'>;
 
 export default function TaskListScreen({ navigation }: Props) {
   const { colors } = useTheme();
@@ -31,7 +31,7 @@ export default function TaskListScreen({ navigation }: Props) {
       <Card.Actions>
         <Button
           mode="contained"
-          onPress={() => navigation.navigate('TaskDetails', { taskId: item.id })}
+          onPress={() => navigation.navigate('TaskDetailsScreen', { taskId: item.id })}
         >
           Ver Detalles
         </Button>
@@ -42,6 +42,11 @@ export default function TaskListScreen({ navigation }: Props) {
   return (
     <PaperProvider>
       <View style={[styles.container, { backgroundColor: colors.background }]}>
+        <PanelSuperior
+          title="Tareas"
+          onNotificationPress={() => console.log("Notificaciones")}
+          notificationCount={3}
+        />
         <FlatList
           data={tasks}
           keyExtractor={(item) => item.id}

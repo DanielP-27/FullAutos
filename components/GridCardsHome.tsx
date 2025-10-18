@@ -11,7 +11,7 @@ const data = [
   { id: '2', title: 'Servicios', icon: 'hand-left-outline', color: '#EF4444', route: 'Services' },
   { id: '3', title: 'Postular CV', icon: 'document-text-outline', color: '#10B981', route: 'RegisterCV' },
   { id: '4', title: 'Técnicos', icon: 'people-outline', color: '#F59E0B', route: 'Technicians' },
-  { id: '5', title: 'Tareas', icon: 'clipboard-outline', color: '#2563EB', route: '' },
+  { id: '5', title: 'Tareas', icon: 'clipboard-outline', color: '#2563EB', route: 'TaskListScreen' },
 ];
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;

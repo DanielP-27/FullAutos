@@ -1,3 +1,4 @@
+import PanelSuperior from '@/components/PanelSuperior';
 import { useTheme } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
@@ -5,7 +6,7 @@ import { StyleSheet, View } from 'react-native';
 import { Button, Card, PaperProvider, Paragraph, Title } from 'react-native-paper';
 import { RootStackParamList } from '../Navigation';
 
-type Props = NativeStackScreenProps<RootStackParamList, 'TaskDetails'>;
+type Props = NativeStackScreenProps<RootStackParamList, 'TaskDetailsScreen'>;
 
 export default function TaskDetailsScreen({ navigation, route }: Props) {
   const { colors } = useTheme();
@@ -19,6 +20,11 @@ export default function TaskDetailsScreen({ navigation, route }: Props) {
   return (
     <PaperProvider>
       <View style={[styles.container, { backgroundColor: colors.background }]}>
+        <PanelSuperior
+          title="Detalles"
+          onNotificationPress={() => console.log("Notificaciones")}
+          notificationCount={3}
+        />
         <Card style={styles.card}>
           <Card.Content>
             <Title>{task.name}</Title>
@@ -27,7 +33,7 @@ export default function TaskDetailsScreen({ navigation, route }: Props) {
           <Card.Actions>
             <Button
               mode="outlined"
-              onPress={() => navigation.navigate('TaskList')}
+              onPress={() => navigation.navigate('TaskListScreen')}
             >
               Volver
             </Button>
