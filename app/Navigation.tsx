@@ -9,16 +9,19 @@ import { SafeAreaView } from "react-native-safe-area-context";
 // Importar todas las pantallas
 import AboutScreen from "./screens/AboutScreen";
 import ConfirmacionCitaScreen from "./screens/ConfirmacionCitaScreen";
+import DetalleServicioScreen from "./screens/DetalleServicioScreen";
 import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterCVScreen from "./screens/RegisterCVScreen";
 import RegisterUser from "./screens/RegisterUser";
 import RegistroServiciosScreen from "./screens/RegistroServicioScreen";
 import ServicesScreen from "./screens/ServiciosScreen";
+import TaskListScreen from "./screens/TaskListScreen";
 import TechniciansScreen from "./screens/TechniciansScreen";
-import DetalleServicioScreen from "./screens/DetalleServicioScreen";
 
 import NavbarBottom from "../components/NavbarBottom";
+import ContactScreen from "./screens/ContactScreen";
+import TaskDetailsScreen from "./screens/TaskDetailsScreen";
 
 // Definir los tipos de parámetros para navegación
 export type RootStackParamList = {
@@ -29,6 +32,8 @@ export type RootStackParamList = {
   Technicians: undefined;
   RegisterCV: undefined;
   RegisterUser: undefined;
+  TaskDetailsScreen: {taskId: string};
+  TaskListScreen: undefined;
   Contact: undefined;
   DetalleServicio: { servicioId: number };
   RegistroServicio: {
@@ -178,6 +183,23 @@ export default function Navigation() {
       <Stack.Screen
         name="CitaProgramada"
         component={ConfirmacionCitaScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen name="Contact" options={{ title: "Conctact" }}>
+        {() => (
+          <ScreenWithNavbar>
+            <ContactScreen/>
+          </ScreenWithNavbar>
+        )}
+      </Stack.Screen>
+      <Stack.Screen
+        name="TaskListScreen"
+        component={TaskListScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="TaskDetailsScreen"
+        component={TaskDetailsScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

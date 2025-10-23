@@ -1,101 +1,150 @@
+import PanelSuperior from '@/components/PanelSuperior';
 import { useTheme } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import React from 'react';
-import { Linking, ScrollView, StyleSheet, View } from 'react-native';
-import { Button, Divider, PaperProvider, Text } from 'react-native-paper';
+import { Image, Linking, ScrollView, StyleSheet, View } from 'react-native';
+import { Button, PaperProvider, Text } from 'react-native-paper';
 import { RootStackParamList } from '../Navigation';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Contact'>;
 
-export default function ContactScreen({ navigation }: Props) {
+export default function ContactScreen() {
   const { colors } = useTheme();
 
   const handleEmailPress = () => {
     Linking.openURL('mailto:full_autos@mail.com');
   };
 
-  const handleLocationPress = () => {
-    // Aquí puedes agregar la funcionalidad para abrir maps o dirección
-    alert('Funcionalidad de ubicación');
+ const handlePhonePress = () => {
+    Linking.openURL('tel:123-456-7890');
   };
 
-  return (
+  const handleLocationPress = () => {
+    Linking.openURL('https://maps.google.com/?q=Carrera+15+No+45+-+20+Bogotá');
+  };
+
+  const handleSocialPress = (platform: string) => {
+    console.log(`Abriendo ${platform}`);
+  };
+
+   return (
     <PaperProvider>
+      <PanelSuperior
+        title="Contacto"
+        onNotificationPress={() => console.log("Notificaciones")}
+        notificationCount={3}
+      />
+      
       <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
-        <Text variant="headlineMedium" style={styles.title}>
-          Contacto
-        </Text>
-
-        {/* Información de contacto */}
-        <View style={styles.section}>
-          <Text variant="titleMedium" style={styles.boldText}>
-            Teléfono
-          </Text>
-          <Text variant="bodyMedium" style={styles.contactInfo}>
-            123-456-7890
-          </Text>
-
-          <Text variant="titleMedium" style={[styles.boldText, styles.marginTop]}>
-            Correo Electrónico
-          </Text>
-          <Button 
-            mode="text" 
-            onPress={handleEmailPress}
-            style={styles.emailButton}
-          >
-            full_autos@mail.com
-          </Button>
-        </View>
-
-        <Divider style={styles.divider} />
-
-        {/* Horario de atención */}
-        <View style={styles.section}>
-          <Text variant="titleLarge" style={styles.sectionTitle}>
-            Horario de Atención
-          </Text>
-          <Text variant="bodyMedium" style={styles.schedule}>
-            Lunes a Viernes: 8:00 - 18:00{"\n"}
-            Sábado: 8:00 - 13:00{"\n"}
-            Domingo: No tenemos servicio
-          </Text>
-        </View>
-
-        <Divider style={styles.divider} />
-
-        {/* Ubicación */}
-        <View style={styles.section}>
-          <Text variant="titleLarge" style={styles.sectionTitle}>
-            Ubicación
-          </Text>
+        
+        {/* Tarjeta blanca de contacto */}
+        <View style={[styles.contactCard, { backgroundColor: '#FFFFFF' }]}>
           
-          <View style={styles.locationButtons}>
-            <Button 
-              mode="outlined" 
-              onPress={handleLocationPress}
-              style={styles.locationButton}
-              contentStyle={styles.buttonContent}
-            >
-              Dirección 1
-            </Button>
+          {/* Teléfono y Correo Electrónico */}
+          <View style={styles.contactGroup}>
+            <View style={styles.infoRow}>
+              <View style={styles.infoColumn}>
+                <Text variant="labelSmall" style={styles.label}>
+                  Teléfono
+                </Text>
+                <Button 
+                  mode="text" 
+                  onPress={handlePhonePress}
+                  style={styles.contactButton}
+                  labelStyle={styles.contactButtonLabel}
+                >
+                  123-456-7890
+                </Button>
+              </View>
+              
+              <View style={styles.infoColumn}>
+                <Text variant="labelSmall" style={styles.label}>
+                  Correo Electrónico
+                </Text>
+                <Button 
+                  mode="text" 
+                  onPress={handleEmailPress}
+                  style={styles.contactButton}
+                  labelStyle={styles.contactButtonLabel}
+                >
+                  full_autos@mail.com
+                </Button>
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.divider} />
+
+          {/* Horario de Atención */}
+          <View style={styles.scheduleSection}>
+            <Text variant="titleMedium" style={styles.sectionTitle}>
+              Horario de Atención
+            </Text>
+            <Text variant="bodyMedium" style={styles.scheduleText}>
+              Lunes a Viernes: 8:00 - 18:00
+            </Text>
+            <Text variant="bodyMedium" style={styles.scheduleText}>
+              Sábado: 8:00 - 13:00
+            </Text>
+            <Text variant="bodyMedium" style={styles.scheduleTextBold}>
+              Domingo: No tenemos servicio
+            </Text>
+          </View>
+
+          <View style={styles.divider} />
+
+          {/* Ubicación */}
+          <View style={styles.locationSection}>
+            <Text variant="titleMedium" style={styles.sectionTitle}>
+              Ubicación
+            </Text>
             
+            {/* Mapa simulado con imagen */}
+            <View style={styles.mapContainer}>
+               <Image
+                 source={require('../../assets/images/ubicacion.png')}
+                 resizeMode="contain"
+               />
+              <View style={styles.mapPinContainer}>
+                <Text style={styles.mapPin}>📍</Text>
+              </View>
+            </View>
+
+            {/* Dirección */}
             <Button 
-              mode="outlined" 
+              mode="contained" 
               onPress={handleLocationPress}
-              style={styles.locationButton}
-              contentStyle={styles.buttonContent}
+              style={styles.directionButton}
+              labelStyle={styles.directionButtonLabel}
             >
-              Dirección 2
+              Carrera 15 No 45 - 20 Bogotá
             </Button>
-            
+          </View>
+        </View>
+
+        {/* Redes Sociales */}
+        <View style={styles.socialSection}>
+          <View style={styles.socialContainer}>
+            {/* <Button 
+              icon={() => <Text style={styles.socialIcon}>𝕏</Text>}
+              onPress={() => handleSocialPress('Twitter')}
+              style={styles.socialButton}
+            />
             <Button 
-              mode="outlined" 
-              onPress={handleLocationPress}
-              style={styles.locationButton}
-              contentStyle={styles.buttonContent}
-            >
-              Dirección 3
-            </Button>
+              icon={() => <Text style={styles.socialIcon}>📷</Text>}
+              onPress={() => handleSocialPress('Instagram')}
+              style={styles.socialButton}
+            />
+            <Button 
+              icon={() => <Text style={styles.socialIcon}>▶️</Text>}
+              onPress={() => handleSocialPress('YouTube')}
+              style={styles.socialButton}
+            />
+            <Button 
+              icon={() => <Text style={styles.socialIcon}>in</Text>}
+              onPress={() => handleSocialPress('LinkedIn')}
+              style={styles.socialButton}
+            /> */}
           </View>
         </View>
 
@@ -110,48 +159,121 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
   },
-  title: {
-    marginBottom: 20,
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-  section: {
+  contactCard: {
+    borderRadius: 12,
+    padding: 20,
     marginBottom: 24,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
-  sectionTitle: {
-    marginBottom: 12,
-    fontWeight: 'bold',
+  contactGroup: {
+    marginBottom: 16,
   },
-  boldText: {
-    fontWeight: 'bold',
+  infoRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 16,
+  },
+  infoColumn: {
+    flex: 1,
+  },
+  label: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: '#999999',
     marginBottom: 4,
+    textTransform: 'uppercase',
   },
-  contactInfo: {
-    marginBottom: 12,
-  },
-  emailButton: {
+  contactButton: {
     alignSelf: 'flex-start',
-    marginTop: 4,
+    padding: 0,
   },
-  marginTop: {
-    marginTop: 12,
-  },
-  schedule: {
-    lineHeight: 24,
+  contactButtonLabel: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#333333',
   },
   divider: {
-    marginVertical: 20,
+    height: 1,
+    backgroundColor: '#E8E8E8',
+    marginVertical: 16,
   },
-  locationButtons: {
+  scheduleSection: {
+    marginBottom: 0,
+  },
+  sectionTitle: {
+    fontWeight: '700',
+    marginBottom: 12,
+    fontSize: 16,
+    color: '#333333',
+  },
+  scheduleText: {
+    fontSize: 14,
+    lineHeight: 22,
+    color: '#666666',
+    marginBottom: 4,
+  },
+  scheduleTextBold: {
+    fontSize: 14,
+    lineHeight: 22,
+    color: '#333333',
+    fontWeight: '700',
+    marginBottom: 4,
+  },
+  locationSection: {
+    marginBottom: 0,
+  },
+  mapContainer: {
+    position: 'relative',
+    marginBottom: 12,
+    borderRadius: 8,
+    overflow: 'hidden',
+    height: 200,
+    backgroundColor: '#F0F0F0',
+  },
+  mapImage: {
+    width: '100%',
+    height: '100%',
+  },
+  mapPinContainer: {
+    position: 'absolute',
+    top: '40%',
+    left: '50%',
+    transform: [{ translateX: -12 }, { translateY: -24 }],
+  },
+  mapPin: {
+    fontSize: 24,
+  },
+  directionButton: {
+    backgroundColor: '#3366FF',
+    borderRadius: 8,
+  },
+  directionButtonLabel: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: '#FFFFFF',
+  },
+  socialSection: {
+    marginTop: 12,
+    marginBottom: 24,
+    alignItems: 'center',
+  },
+  socialContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
     gap: 12,
   },
-  locationButton: {
-    borderWidth: 1,
+  socialButton: {
+    borderRadius: 50,
   },
-  buttonContent: {
-    paddingVertical: 8,
+  socialIcon: {
+    fontSize: 18,
+    fontWeight: '600',
   },
   navbarPlaceholder: {
-    height: 60,
+    height: 80,
   },
 });

@@ -3,7 +3,6 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import React, { useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import NavbarBottom from "../../components/NavbarBottom";
 import PanelSuperior from "../../components/PanelSuperior";
 import { serviciosData } from "../../data/serviciosData";
 import type { RootStackParamList } from '../Navigation';
@@ -55,9 +54,7 @@ export default function ServicesScreen() {
         ))}
       </ScrollView>
 
-      <NavbarBottom 
-      activeTab={activeTab} 
-      onTabPress={handleTabPress} />
+      
     </View>
   );
 }
